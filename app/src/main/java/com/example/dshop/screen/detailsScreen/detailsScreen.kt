@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -183,19 +184,22 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(
-                    text =  "£${state.price }",
-                    style = Typography.titleMedium,
-                    modifier = Modifier.padding(end = 26.dp)
-                )
-
+                Box(
+                    modifier = Modifier
+                        .width(100.dp)
+                        .padding(end = 26.dp)
+                ) {
+                    Text(
+                        text = "£${state.price}",
+                        style = Typography.titleMedium
+                    )
+                }
 
                 Button(
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(Red),
                     onClick = {}
                 ) {
-
                     Text(
                         modifier = Modifier.padding(vertical = 10.dp),
                         text = "Add to Cart",
@@ -203,7 +207,6 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
                         style = Typography.titleSmall
                     )
                 }
-
             }
         }
 

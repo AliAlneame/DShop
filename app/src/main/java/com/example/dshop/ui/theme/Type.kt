@@ -17,6 +17,13 @@ val Typography = Typography(
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     ),
+    bodySmall = TextStyle(
+        fontFamily = FontFamily(Font(R.font.inter_regular)),
+        fontWeight = FontWeight(400),
+        fontSize = 14.sp,
+        lineHeight = 18.sp,
+        letterSpacing = 0.7.sp
+    ),
     titleLarge = TextStyle(
         fontFamily = FontFamily(Font(R.font.inter_regular)),
         fontWeight = FontWeight(700),
@@ -24,13 +31,21 @@ val Typography = Typography(
         lineHeight = 64.sp,
         letterSpacing = 0.5.sp
     ),
-    titleSmall = TextStyle(
+    titleMedium = TextStyle(
         fontFamily = FontFamily(Font(R.font.inter_regular)),
+        fontWeight = FontWeight(600),
+        fontSize = 30.sp,
+        lineHeight = 44.sp,
+        letterSpacing = 0.5.sp
+    ),
+    titleSmall = TextStyle(
+        fontFamily =FontFamily(Font(R.font.inter_regular)),
         fontWeight = FontWeight(600),
         fontSize = 20.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
     )
+
 )
     /* Other default text styles to override
     titleLarge = TextStyle(

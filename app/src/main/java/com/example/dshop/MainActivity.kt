@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.dshop.screen.OnBoardingHomeScreenContent
+import com.example.dshop.screen.detailsScreen.detailsScreen
 import com.example.dshop.ui.theme.DShopTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    OnBoardingHomeScreenContent()
+                    detailsScreen()
                 }
             }
         }

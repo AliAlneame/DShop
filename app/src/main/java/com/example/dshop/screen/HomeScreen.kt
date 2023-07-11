@@ -42,7 +42,7 @@ fun OnBoardingHomeScreenContent() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Pink) // Adjusted color
+            .background(Pink)
     ) {
         Image(
             painter = painterResource(id = R.drawable.dount),
@@ -69,7 +69,7 @@ fun OnBoardingHomeScreenContent() {
 
                     text = stringResource(R.string.gounts_with_donuts),
                     style = Typography .titleLarge,
-                    color =  Red_Light
+                    color =  Red
                 )
 
                 Text(
@@ -84,7 +84,7 @@ fun OnBoardingHomeScreenContent() {
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(end = 40.dp, start = 40.dp, bottom = 46.dp, top = 40.dp),  // Added top padding here
+                        .padding(end = 40.dp, start = 40.dp, bottom = 46.dp, top = 40.dp),
                     colors = ButtonDefaults.buttonColors(Color.White),
                     onClick = { /*TODO*/ }
                 ) {

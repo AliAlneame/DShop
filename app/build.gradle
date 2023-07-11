@@ -85,5 +85,5 @@ dependencies {
     implementation "androidx.work:work-runtime:2.8.1"
     implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 
-
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
 }

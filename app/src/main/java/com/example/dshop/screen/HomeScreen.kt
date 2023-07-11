@@ -13,17 +13,23 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.material3.Text
+import androidx.compose.material3.Typography
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.dshop.Greeting
 import com.example.dshop.R
 import com.example.dshop.ui.theme.DShopTheme
 import com.example.dshop.ui.theme.Pink
+import com.example.dshop.ui.theme.Red
+import com.example.dshop.ui.theme.Red_Light
+import com.example.dshop.ui.theme.Typography
 
 @Composable
 fun OnBoardingHomeScreen() {
@@ -36,7 +42,7 @@ fun OnBoardingHomeScreenContent() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Pink)
+            .background(Pink) // Adjusted color
     ) {
         Image(
             painter = painterResource(id = R.drawable.dount),
@@ -45,14 +51,12 @@ fun OnBoardingHomeScreenContent() {
                 .fillMaxHeight(0.6f)
                 .fillMaxWidth(1.5f),
             contentScale = ContentScale.FillHeight
-
-            )
+        )
 
         Column(
             modifier = Modifier
                 .fillMaxSize()
         ) {
-
             Column(
                 modifier = Modifier
                     .fillMaxSize(),
@@ -62,26 +66,32 @@ fun OnBoardingHomeScreenContent() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 40.dp),
-                    text = "Gounts\nWith\nDonuts"
+
+                    text = stringResource(R.string.gounts_with_donuts),
+                    style = Typography .titleLarge,
+                    color =  Red_Light
                 )
 
                 Text(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 40.dp),
-                    text = "Gonuts with Donuts is a Sri Lanka dedicated food outlets for specialize manufacturing of Donuts in Colombo, Sri Lanka.",
-                    color = Color.White
+                        .padding(end = 40.dp, start = 40.dp,top = 19.dp),
+                    text = stringResource(R.string.Descrption),
+                    style = Typography .bodyLarge,
+                    color = Red_Light
                 )
 
                 Button(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(end = 40.dp, start = 40.dp, bottom = 46.dp),
+                        .padding(end = 40.dp, start = 40.dp, bottom = 46.dp, top = 40.dp),  // Added top padding here
                     colors = ButtonDefaults.buttonColors(Color.White),
-                    onClick = { /* Handle onClick here*/ }
+                    onClick = { /*TODO*/ }
                 ) {
                     Text(
-                        text = "Get Start",
+                        modifier = Modifier.padding(vertical = 10.dp),
+                        text = stringResource(R.string.get_start),
+                        style =  Typography.titleSmall,
                         color = Color.Black
                     )
                 }
@@ -89,6 +99,7 @@ fun OnBoardingHomeScreenContent() {
         }
     }
 }
+
 
 @Preview
 @Composable

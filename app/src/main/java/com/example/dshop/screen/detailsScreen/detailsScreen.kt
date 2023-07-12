@@ -58,6 +58,7 @@ import com.example.dshop.R
 import com.example.dshop.ui.theme.Grey
 import com.example.dshop.ui.theme.Pink
 import com.example.dshop.ui.theme.Red_Light
+import com.example.dshop.ui.theme.Redd
 import com.example.dshop.ui.theme.Typography
 
 @Composable
@@ -117,7 +118,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
                 modifier = Modifier.padding(start = 40.dp, top = 35.dp),
                 text = stringResource(R.string.strawberry_wheel),
                 style = Typography.titleMedium,
-                color = Red
+                color = Redd
             )
 
             Text(
@@ -217,7 +218,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
 
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(Red),
+                    colors = ButtonDefaults.buttonColors(Redd),
                     onClick = {}
                 ) {
                     Text(

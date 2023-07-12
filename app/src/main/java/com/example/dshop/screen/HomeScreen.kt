@@ -27,8 +27,9 @@ import com.example.dshop.Greeting
 import com.example.dshop.R
 import com.example.dshop.ui.theme.DShopTheme
 import com.example.dshop.ui.theme.Pink
-import com.example.dshop.ui.theme.Red
+
 import com.example.dshop.ui.theme.Red_Light
+import com.example.dshop.ui.theme.Redd
 import com.example.dshop.ui.theme.Typography
 
 @Composable
@@ -69,7 +70,7 @@ fun OnBoardingHomeScreenContent() {
 
                     text = stringResource(R.string.gounts_with_donuts),
                     style = Typography .titleLarge,
-                    color =  Red
+                    color =  Redd
                 )
 
                 Text(

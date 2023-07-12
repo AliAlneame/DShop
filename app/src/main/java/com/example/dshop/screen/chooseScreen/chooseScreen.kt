@@ -3,16 +3,18 @@ package com.example.dshop.screen.chooseScreen
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+
+
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
+
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -50,6 +52,7 @@ fun chooseScreen(
     chooseContent(state, viewModel)
 
 }
+
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -105,48 +108,59 @@ fun chooseContent(state: chooseUIState, viewModel: chooseViewModel) {
                     fontSize = 20.sp
                 )
 
-                Card(modifier = Modifier
-                    .padding(start = 36.dp, top = 25.dp)
-                    .size(height = 325.dp, width = 193.dp),
-                    colors = CardDefaults.cardColors(seaBlue),
-                    shape = RoundedCornerShape(12.dp),
-                    elevation = CardDefaults.cardElevation(2.dp),
-                    onClick = { viewModel }
-                ) {
-                    Box(modifier = Modifier.fillMaxSize()) {
-                        Image(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(650.dp)
-                                .offset(x = 82.5.dp),
-                            painter = painterResource(id = R.drawable.sdount2),
-                            contentDescription = "card background",
-                            contentScale = ContentScale.Crop,
+                LazyRow(
+                    modifier = Modifier
+                        .padding(start = 36.dp, top = 25.dp, end = 36.dp),
+                    horizontalArrangement = Arrangement.spacedBy(32.dp)
+                )
+                {
+                    items(5) { // use your actual list size
 
-                        )
-                        Box(
-                            modifier = Modifier
-                                .padding(start = 15.dp, top = 15.dp)
-                                .size(35.dp)
-                                .background(
-                                    Color.White,
-                                    RoundedCornerShape(32.dp)
-                                ),
-                        )
+                        Box(  modifier = Modifier
+                            .size(height = 325.dp, width = 246.dp),) {
+                            Card(
+                                modifier = Modifier
+                                    .size(height = 325.dp, width = 193.dp),
+                                colors = CardDefaults.cardColors(seaBlue),
+                                shape = RoundedCornerShape(12.dp),
+                                elevation = CardDefaults.cardElevation(2.dp),
+                                onClick = { /*viewModel logic*/ }
+                            ) {
+                                Box(modifier = Modifier.fillMaxSize()) {
+
+                                    Box(
+                                        modifier = Modifier
+                                            .padding(start = 15.dp, top = 15.dp)
+                                            .size(35.dp)
+                                            .background(
+                                                Color.White,
+                                                RoundedCornerShape(32.dp)
+                                            ),
+                                    )
+                                    {
+                                        Icon(
+                                            modifier = Modifier.align(Alignment.Center),
+                                            painter = painterResource(id = R.drawable.baseline_favorite_border_24),
+                                            contentDescription = "search",
+                                            tint = Redd
+                                        )
+                                    }
+                                }
+                            }
+                            Image(
+                                modifier = Modifier
+                                    .size(237.dp)
+                                    .align(Alignment.CenterEnd),
 
 
-                        {
-                            Icon(
-                                modifier = Modifier.align(Alignment.Center),
-                                painter = painterResource(id = R.drawable.baseline_favorite_border_24),
-                                contentDescription = "search",
-                                tint = Redd
+                                painter = painterResource(id = R.drawable.sdount2),
+                                contentDescription = "card background",
+                                contentScale = ContentScale.Crop,
                             )
                         }
-
                     }
-
                 }
+
                 Text(
                     modifier = Modifier
                         .padding(start = 36.dp, top = 46.dp),
@@ -154,8 +168,6 @@ fun chooseContent(state: chooseUIState, viewModel: chooseViewModel) {
                     fontSize = 20.sp
                 )
             }
-
-
         }
     }
 }

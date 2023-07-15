@@ -77,7 +77,7 @@ fun BottomNav() {
             Box(
 
             ) {
-                Text(text = "2", color = Color(0xDEFFFFFF), textAlign = TextAlign.Center, modifier = Modifier.padding(4.dp).background(
+                Text(text = "5", color = Color(0xDEFFFFFF), textAlign = TextAlign.Center, modifier = Modifier.padding(4.dp).background(
                     Color(0xFFFF5524), shape = CircleShape
                 ) )
             }

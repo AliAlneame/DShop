@@ -7,13 +7,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.dshop.ui.theme.Red_Light
 
 @Composable
-fun BackButton() {
+fun BackButton(navController: NavController) {
     IconButton(
         modifier = Modifier.padding(top = 45.dp, start = 32.dp),
-        onClick = {}
+        onClick = { navController.navigateUp()}
     ) {
         Icon(
             painter = painterResource(id = R.drawable.baseline_arrow_back_ios_new_24),

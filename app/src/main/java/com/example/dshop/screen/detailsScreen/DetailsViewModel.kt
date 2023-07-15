@@ -3,9 +3,12 @@ package com.example.dshop.screen.detailsScreen
 import android.util.Log
 import com.example.dshop.BaseViewModel
 import com.example.dshop.R
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.update
+import javax.inject.Inject
 
-class DetailsViewModel : BaseViewModel<DetailsUIState>(DetailsUIState()) {
+@HiltViewModel
+class DetailsViewModel @Inject constructor() : BaseViewModel<DetailsUIState>(DetailsUIState()) {
 
     init {
         _state.update {

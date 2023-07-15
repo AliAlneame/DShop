@@ -16,4 +16,4 @@ val White = Color(0xFFFFFFFF)
 val Black = Color(0xFF000000)
 val Grey = Color(0x99000000)
 val seaBlue = Color(0xFFD7E4F6)
-
+val White_Light = Color(0xFFfefefe)

@@ -23,8 +23,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.dshop.Greeting
 import com.example.dshop.R
+import com.example.dshop.Screen
 import com.example.dshop.ui.theme.DShopTheme
 import com.example.dshop.ui.theme.Pink
 
@@ -33,13 +35,12 @@ import com.example.dshop.ui.theme.Redd
 import com.example.dshop.ui.theme.Typography
 
 @Composable
-fun OnBoardingHomeScreen() {
-
-
+fun OnBoardingHomeScreen(navController: NavController) {
+    OnBoardingHomeScreenContent(navController)
 }
 
 @Composable
-fun OnBoardingHomeScreenContent() {
+fun OnBoardingHomeScreenContent( navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -87,7 +88,7 @@ fun OnBoardingHomeScreenContent() {
                         .fillMaxWidth()
                         .padding(end = 40.dp, start = 40.dp, bottom = 46.dp, top = 40.dp),
                     colors = ButtonDefaults.buttonColors(Color.White),
-                    onClick = { /*TODO*/ }
+                    onClick = { navController.navigate(Screen.ChooseScreen.route) }
                 ) {
                     Text(
                         modifier = Modifier.padding(vertical = 10.dp),
@@ -102,10 +103,10 @@ fun OnBoardingHomeScreenContent() {
 }
 
 
-@Preview
-@Composable
-fun onBordingScreenPreview() {
-    DShopTheme {
-        OnBoardingHomeScreenContent()
-    }
-}
+//@Preview
+//@Composable
+//fun onBordingScreenPreview() {
+//    DShopTheme {
+//        OnBoardingHomeScreenContent()
+//    }
+//}

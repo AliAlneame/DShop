@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -34,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.dshop.BottomNav
 import com.example.dshop.R
@@ -41,27 +43,25 @@ import com.example.dshop.screen.detailsScreen.detailsScreen
 import com.example.dshop.ui.theme.Red_Light
 import com.example.dshop.ui.theme.Redd
 import com.example.dshop.ui.theme.Typography
+import com.example.dshop.ui.theme.White_Light
 import com.example.dshop.ui.theme.seaBlue
 
 @Composable
-fun chooseScreen(
-    viewModel: chooseViewModel = hiltViewModel()
-
-) {
+fun chooseScreen(navController: NavController, viewModel: chooseViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
-    chooseContent(state, viewModel)
+    chooseContent(state, viewModel,navController)
 
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun chooseContent(state: chooseUIState, viewModel: chooseViewModel) {
+fun chooseContent(state: chooseUIState, viewModel: chooseViewModel,navController: NavController) {
     Scaffold(bottomBar = { BottomNav() }) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(White_Light)
         ) {
             Column {
 
@@ -114,66 +114,31 @@ fun chooseContent(state: chooseUIState, viewModel: chooseViewModel) {
                     horizontalArrangement = Arrangement.spacedBy(32.dp)
                 )
                 {
-                    items(5) { // use your actual list size
+                    items(5) {
 
-                        Box(  modifier = Modifier
-                            .size(height = 325.dp, width = 246.dp),) {
-                            Card(
-                                modifier = Modifier
-                                    .size(height = 325.dp, width = 193.dp),
-                                colors = CardDefaults.cardColors(seaBlue),
-                                shape = RoundedCornerShape(12.dp),
-                                elevation = CardDefaults.cardElevation(2.dp),
-                                onClick = { /*viewModel logic*/ }
-                            ) {
-                                Box(modifier = Modifier.fillMaxSize()) {
-
-                                    Box(
-                                        modifier = Modifier
-                                            .padding(start = 15.dp, top = 15.dp)
-                                            .size(35.dp)
-                                            .background(
-                                                Color.White,
-                                                RoundedCornerShape(32.dp)
-                                            ),
-                                    )
-                                    {
-                                        Icon(
-                                            modifier = Modifier.align(Alignment.Center),
-                                            painter = painterResource(id = R.drawable.baseline_favorite_border_24),
-                                            contentDescription = "search",
-                                            tint = Redd
-                                        )
-                                    }
-                                }
-                            }
-                            Image(
-                                modifier = Modifier
-                                    .size(237.dp)
-                                    .align(Alignment.CenterEnd),
-
-
-                                painter = painterResource(id = R.drawable.sdount2),
-                                contentDescription = "card background",
-                                contentScale = ContentScale.Crop,
-                            )
-                        }
+                        OffersItems(navController)
                     }
                 }
-
-                Text(
+                LazyRow(
                     modifier = Modifier
-                        .padding(start = 36.dp, top = 46.dp),
-                    text = "Donuts",
-                    fontSize = 20.sp
+                        .padding(start = 36.dp, top = 25.dp, end = 36.dp),
+                    horizontalArrangement = Arrangement.spacedBy(32.dp)
                 )
+                {
+                    items(5) {
+                        DonutItems(navController)
+                    }
+                }
             }
         }
+
+        Text(
+            modifier = Modifier
+                .padding(start = 36.dp, top = 46.dp),
+            text = "Donuts",
+            fontSize = 20.sp
+        )
     }
 }
 
-@Preview
-@Composable
-fun choosePreview() {
-    chooseScreen()
-}
+

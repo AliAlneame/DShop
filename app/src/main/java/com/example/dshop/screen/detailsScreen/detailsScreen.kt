@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.example.dshop.BackButton
 import com.example.dshop.R
 import com.example.dshop.ui.theme.Grey
@@ -63,16 +64,17 @@ import com.example.dshop.ui.theme.Typography
 
 @Composable
 fun detailsScreen (
+    navController: NavController,
     viewModel: DetailsViewModel = hiltViewModel()
 
 ){
     val state by viewModel.state.collectAsState()
-    DetailsContent(state, viewModel)
+    DetailsContent(state, viewModel, navController)
 
 }
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
+fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel,navController: NavController) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
@@ -90,7 +92,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
             )
         )
 
-        BackButton()
+        BackButton(navController)
 
         Image(
             painter = painterResource(id = R.drawable.image_11),
@@ -263,8 +265,3 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel) {
     }
 }
 
-@Preview
-@Composable
-fun DetailsScreenPreview() {
-    detailsScreen()
-}

@@ -257,7 +257,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel,navControl
                 Icon(
                     modifier = Modifier.align(Alignment.Center),
                     painter = painterResource(
-                        id = if (state.isFavorite) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24 // <-- Change icon depending on favourite status
+                        id = if (state.isFavorite) R.drawable.baseline_favorite_24 else R.drawable.baseline_favorite_border_24
                     ),
                     contentDescription = "favourite",
                     tint = Red

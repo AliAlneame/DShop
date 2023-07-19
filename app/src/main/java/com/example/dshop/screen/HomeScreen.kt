@@ -121,11 +121,3 @@ fun OnBoardingHomeScreenContent( navController: NavController) {
     }
 }
 
-
-//@Preview
-//@Composable
-//fun onBordingScreenPreview() {
-//    DShopTheme {
-//        OnBoardingHomeScreenContent()
-//    }
-//}

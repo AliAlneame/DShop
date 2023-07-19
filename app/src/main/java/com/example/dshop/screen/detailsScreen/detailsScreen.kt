@@ -1,5 +1,6 @@
 package com.example.dshop.screen.detailsScreen
 
+import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
@@ -31,8 +32,10 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -82,16 +85,17 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel,navControl
     ) {
 
         val (bottomSheet, mainImage, iconFav) = createRefs()
-        val infiniteTransition = rememberInfiniteTransition()
-        val angle by infiniteTransition.animateFloat(
-            initialValue = 0F,
-            targetValue = 360F,
-            animationSpec = infiniteRepeatable(
-                animation = tween(2000, easing = LinearEasing),
-                repeatMode = RepeatMode.Restart
-            )
-        )
+        val rotation = remember { Animatable(initialValue = 0f) }
 
+        LaunchedEffect(key1 = rotation) {
+            rotation.animateTo(
+                targetValue = 360f,
+                animationSpec = tween(
+                    durationMillis = 10000,
+                    easing = LinearEasing
+                )
+            )
+        }
         BackButton(navController)
 
         Image(
@@ -99,7 +103,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel,navControl
             contentDescription = "donut",
             contentScale = ContentScale.FillWidth,
             modifier = Modifier.fillMaxWidth()
-                .rotate(angle)
+                .rotate(rotation.value)
                 .constrainAs(mainImage){
                     top.linkTo(parent.top,28.dp)
                 }

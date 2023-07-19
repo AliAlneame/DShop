@@ -1,5 +1,11 @@
 package com.example.dshop.screen
 
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -8,6 +14,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -15,6 +22,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.Text
 import androidx.compose.material3.Typography
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -41,6 +49,16 @@ fun OnBoardingHomeScreen(navController: NavController) {
 
 @Composable
 fun OnBoardingHomeScreenContent( navController: NavController) {
+
+    val infiniteTransition = rememberInfiniteTransition()
+    val imagePosition by infiniteTransition.animateFloat (
+        initialValue = 0f,
+        targetValue = 10f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(1000, easing = LinearEasing),
+            repeatMode = RepeatMode.Reverse
+        )
+    )
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -51,7 +69,8 @@ fun OnBoardingHomeScreenContent( navController: NavController) {
             contentDescription = "Dount",
             modifier = Modifier
                 .fillMaxHeight(0.6f)
-                .fillMaxWidth(1.5f),
+                .fillMaxWidth(1.5f)
+                .offset(y = imagePosition.dp),
             contentScale = ContentScale.FillHeight
         )
 

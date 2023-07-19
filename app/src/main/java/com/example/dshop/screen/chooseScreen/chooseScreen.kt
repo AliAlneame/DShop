@@ -8,9 +8,11 @@ import androidx.compose.foundation.layout.Box
 
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 
 import androidx.compose.foundation.layout.padding
@@ -31,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -40,6 +43,8 @@ import coil.compose.AsyncImagePainter.State.Empty.painter
 import com.example.dshop.BottomNav
 import com.example.dshop.R
 import com.example.dshop.screen.detailsScreen.detailsScreen
+import com.example.dshop.ui.theme.Grey
+import com.example.dshop.ui.theme.Pink
 import com.example.dshop.ui.theme.Red_Light
 import com.example.dshop.ui.theme.Redd
 import com.example.dshop.ui.theme.Typography
@@ -58,48 +63,42 @@ fun chooseScreen(navController: NavController, viewModel: chooseViewModel = hilt
 @Composable
 fun chooseContent(state: chooseUIState, viewModel: chooseViewModel,navController: NavController) {
     Scaffold(bottomBar = { BottomNav() }) {
-        Box(
-            modifier = Modifier
+
+            Column (modifier = Modifier
                 .fillMaxSize()
-                .background(White_Light)
-        ) {
-            Column {
+                .background(White_Light)){
 
                 Row(
-                    Modifier.padding(start = 36.dp, top = 81.dp, end = 40.dp),
-                    verticalAlignment = Alignment.CenterVertically
+
+                    Modifier
+                        .fillMaxWidth()
+                        .padding(top = 60.dp, end = 40.dp, start = 40.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
                 ) {
+                    Column() {
+
+
                     Text(
                         text = "Let’s Gonuts!",
                         style = Typography.titleMedium,
                         color = Redd
                     )
-                    Spacer(modifier = Modifier.weight(1f))
-                    Card(
-                        modifier = Modifier
-                            .size(45.dp),
-                        colors = CardDefaults.cardColors(Red_Light),
-                        shape = RoundedCornerShape(12.dp),
-                        elevation = CardDefaults.cardElevation(2.dp),
-                        onClick = { viewModel }
-                    ) {
-                        Box(modifier = Modifier.fillMaxSize()) {
-                            Icon(
-                                modifier = Modifier.align(Alignment.Center),
-                                painter = painterResource(id = R.drawable.baseline_search_24),
-                                contentDescription = "search",
-                                tint = Redd
-                            )
-                        }
+                        Text(
+                            text = "order your favourite donuts from here",
+                            style = Typography.bodySmall,
+                            color = Grey
+                        )
                     }
+
+                    FirstCard(
+
+                        icon = painterResource(id = R.drawable.baseline_search_24),
+                        onClick = {},
+                        cardBackGroundColor = Pink,
+                        navController =  navController,
+                    )
                 }
 
-                Text(
-                    modifier = Modifier
-                        .padding(start = 36.dp),
-                    text = "Order your favourite donuts from here",
-                    fontSize = 14.sp
-                )
 
                 Text(
                     modifier = Modifier
@@ -109,24 +108,35 @@ fun chooseContent(state: chooseUIState, viewModel: chooseViewModel,navController
                 )
 
                 LazyRow(
-                    modifier = Modifier
-                        .padding(start = 36.dp, top = 25.dp, end = 36.dp),
-                    horizontalArrangement = Arrangement.spacedBy(32.dp)
+                    modifier = Modifier.padding(top = 20.dp),
+                    contentPadding = PaddingValues(start = 40.dp)
                 )
                 {
                     items(5) {
 
-                        OffersItems(navController)
+                        OffersItems(
+                            navController=navController,
+                            onClick = {viewModel }
+
+                        )
                     }
                 }
-                LazyRow(
-                    modifier = Modifier
-                        .padding(start = 36.dp, top = 25.dp, end = 36.dp),
-                    horizontalArrangement = Arrangement.spacedBy(32.dp)
+                Text(
+                    text = "Donuts",
+                    style = Typography.titleSmall,
+                    modifier = Modifier.padding(start = 40.dp, top = 40.dp)
                 )
-                {
+                LazyRow(
+                    modifier = Modifier.padding(top = 20.dp),
+                    contentPadding = PaddingValues(horizontal = 40.dp),
+                    horizontalArrangement = Arrangement.spacedBy(20.dp)
+
+                ) {
                     items(5) {
-                        DonutItems(navController)
+                        DonutsItem(  navController=navController,
+                            onClick = {viewModel }
+                        )
+
                     }
                 }
             }
@@ -139,6 +149,6 @@ fun chooseContent(state: chooseUIState, viewModel: chooseViewModel,navController
             fontSize = 20.sp
         )
     }
-}
+
 
 

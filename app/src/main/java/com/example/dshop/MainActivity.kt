@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.dshop.screen.OnBoardingHomeScreenContent
-import com.example.dshop.screen.chooseScreen.DonutItems
+
 import com.example.dshop.screen.chooseScreen.chooseContent
 
 import com.example.dshop.screen.chooseScreen.chooseScreen

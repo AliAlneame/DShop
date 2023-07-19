@@ -187,7 +187,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel,navControl
                 Card(modifier = Modifier
                     .padding(end = 20.dp)
                     .size(45.dp),
-                    colors = CardDefaults.cardColors(Black),
+                    colors = CardDefaults.cardColors(White),
                     shape = RoundedCornerShape(12.dp),
                     elevation = CardDefaults.cardElevation(2.dp),
                     onClick = { viewModel.increaseQuantity() }
@@ -199,7 +199,7 @@ fun DetailsContent(state: DetailsUIState, viewModel: DetailsViewModel,navControl
                             text = "+",
                             style = Typography.labelLarge,
                             textAlign = TextAlign.Center,
-                            color = White
+                            color = Black
                         )
                     }
                 }

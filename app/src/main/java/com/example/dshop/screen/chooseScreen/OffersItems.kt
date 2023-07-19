@@ -82,10 +82,10 @@ fun OffersItems(
 
             }
         }
-        Image(
-            modifier = Modifier.padding(start = 45.dp, top = 10.dp).size(220.dp),
+        RotatingImage(
             painter = image,
             contentDescription = "donut",
+            modifier = Modifier.padding(start = 45.dp, top = 10.dp).size(220.dp),
         )
     }
 }

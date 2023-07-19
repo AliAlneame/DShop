@@ -88,9 +88,9 @@ fun DonutsItem(navController: NavController,image: Painter = painterResource(id 
                 .align(Alignment.BottomCenter)
         )
 
-        Image(
+        RotatingImage(
             painter = image,
-            contentDescription ="donut",
+            contentDescription = "donut",
             modifier = Modifier
                 .align(Alignment.TopCenter)
                 .padding(bottom = 60.dp)
